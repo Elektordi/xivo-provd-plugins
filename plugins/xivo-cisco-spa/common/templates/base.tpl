@@ -38,8 +38,8 @@
 {% endblock -%}
 
 <Voice_Mail_Number>{{ exten_voicemail }}</Voice_Mail_Number>
-<Call_Pickup_Code>{{ exten_pickup_call }}</Call_Pickup_Code>
-<Attendant_Console_Call_Pickup_Code>{{ exten_pickup_call }}</Attendant_Console_Call_Pickup_Code>
+<Call_Pickup_Code>{{ exten_pickup_call }}#</Call_Pickup_Code>
+<Attendant_Console_Call_Pickup_Code>{{ exten_pickup_call }}#</Attendant_Console_Call_Pickup_Code>
 
 {% if '1' in sip_lines -%}
 <Station_Name>{{ sip_lines['1']['display_name']|e }}</Station_Name>
