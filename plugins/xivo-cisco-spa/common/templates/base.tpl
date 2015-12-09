@@ -85,6 +85,18 @@
 <Extended_Function_{{ line_no }}_></Extended_Function_{{ line_no }}_>
 {% endfor %}
 
+{% if '1' in sip_lines -%}
+<Extension_2_>1</Extension_2_>
+<Short_Name_2_>{{ sip_lines['1']['number']|d('$USER') }}</Short_Name_2_>
+<Extended_Function_2_></Extended_Function_2_>
+<Extension_3_>1</Extension_3_>
+<Short_Name_3_>{{ sip_lines['1']['number']|d('$USER') }}</Short_Name_3_>
+<Extended_Function_3_></Extended_Function_3_>
+<Extension_4_>1</Extension_4_>
+<Short_Name_4_>{{ sip_lines['1']['number']|d('$USER') }}</Short_Name_4_>
+<Extended_Function_4_></Extended_Function_4_>
+{% endif -%}
+
 {% if XX_xivo_phonebook_url -%}
 <XML_Directory_Service_Name>{{ XX_directory_name }}</XML_Directory_Service_Name>
 <XML_Directory_Service_URL>{{ XX_xivo_phonebook_url|e }}</XML_Directory_Service_URL>
