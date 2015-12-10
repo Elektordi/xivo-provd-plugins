@@ -286,6 +286,7 @@ class BaseCiscoPlugin(StandardPlugin):
             return
         nb_keys, nb_expmods = self._NB_FKEY[model]
         lines = []
+        range_nbkeys = range(2,nb_keys+1)
         for funckey_no, funckey_dict in sorted(raw_config[u'funckeys'].iteritems(),
                                                key=itemgetter(0)):
             funckey_type = funckey_dict[u'type']
@@ -306,6 +307,7 @@ class BaseCiscoPlugin(StandardPlugin):
                              (funckey_no, label, funckey_no))
                 lines.append(u'<Extended_Function_%s_>%s</Extended_Function_%s_>' %
                              (funckey_no, function, funckey_no))
+                range_nbkeys.remove(funckey_no)
             else:
                 expmod_keynum = keynum - nb_keys - 1
                 expmod_no = expmod_keynum // 32 + 1
@@ -316,6 +318,7 @@ class BaseCiscoPlugin(StandardPlugin):
                     lines.append(u'<Unit_%s_Key_%s>%s</Unit_%s_Key_%s>' %
                                  (expmod_no, expmod_key_no, function, expmod_no, expmod_key_no))
         raw_config[u'XX_fkeys'] = u'\n'.join(lines)
+        raw_config[u'XX_range_nbkeys'] = range_nbkeys
 
     def _format_dst_change(self, dst_change):
         _day = dst_change['day']
